@@ -97,7 +97,7 @@ So here is our first opportunity to make an impression on our customer.  You can
   alert("Do you want to play 'Guess My Number!' " +name + "?")
   var player_guess = prompt("Welcome to 'Guess My Number! " +name + " I have chosen a number between 1 and 100.  See if you can guess it!")
 
-
+```
 ###Wow the first two check boxes are off our list! 
 ####:ballot_box_with_check: [Prompt] the player to enter their [name].
 ####:ballot_box_with_check: Use their [name] to print a greeting.
