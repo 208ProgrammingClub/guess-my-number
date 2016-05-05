@@ -66,7 +66,7 @@ Too High | if players_guess > target number
 Victory | if players_guess = target number
 Gameover | if number_of_guesses >=10
 
-We should have already set up our environment when cloning rom Github.  Just to be sure we have everything in place check to see if you have the following files in your C9.io workspace.
+We should have already set up our environment when cloning from Github.  Just to be sure we have everything in place check to see if you have the following files in your C9.io workspace.
 1. Readme.md 
 2. GuessMyNumber.js
 
