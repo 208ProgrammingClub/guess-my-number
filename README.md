@@ -126,8 +126,10 @@ So here is our first opportunity to make an impression on our customer!  You can
  ```
 __Hint:__  Click your mouse anywhere inside the code window above and press Ctrl+A to select all.  Then hold and press Ctrl+C to Copy to your clipboard after you navigate into your GuessMyNumber.js file press Ctrl+V to paste.
 
-###Wow the first two check boxes are off our list!  However we are still uncertain how we are going to allow our players to quit early but lets move on anyway.
-:ballot_box_with_check: [Prompt] the player to enter their [name].\r:ballot_box_with_check: Use their [name] to print a greeting.
+####Wow the first two check boxes are off our list!  However we are still uncertain how we are going to allow our players to quit early but lets move on anyway.
+:ballot_box_with_check: [Prompt] the player to enter their [name].
+
+:ballot_box_with_check: Use their [name] to print a greeting.
 
 
 ###Our player greeting is done. Let us look at our next requirement###
@@ -135,25 +137,27 @@ __Hint:__  Click your mouse anywhere inside the code window above and press Ctrl
 #5. Random Numbers and Math!#
 ###:white_medium_square: Generate a random number from 1 to 100, and store it as a [target_number] for the player to guess.###
 
-Javascript uses Math.random() which is a bult in JavaScript method used to generate a random number within a given range.  Calling Math.random should be able to create a [target_number] for us. However Math.random selects a random number from 0 to .999999.  Additionally Math.random is not a whole number in fact look at all those nines after the decimal. Oh no! Math.random will return a floating decimal number less than 1 and we told our user we were going to pick a number from 1 to 100.  How can we make this fair?  Well in order to return 1 to 100 we would simply need to multiply the result of Math.random by 100 and add 1.  Here is another JavaScript trick.  Math.floor is another command we use to round down to the nearest whole number.  So we choose a floating decimal between 1 and 100.999 then round down to the nearest whole number in order to chomp off those pesky numbers after the decimal. 
+Javascript uses Math.random() which is a bult in JavaScript method used to generate a random number within a given range.  Calling Math.random should be able to create a [target_number] for us. However Math.random selects a random number from 0 to .999999.  Additionally Math.random is not a whole number in fact look at all those nines after the decimal. 
+
+Oh no! Math.random will return a floating decimal number less than 1 and we told our user we were going to pick a number from 1 to 100.  How can we make this right if not at least fair?  Well in order to return 1 to 100 we would simply need to multiply the result of Math.random by 100 and add 1.  Here is another JavaScript trick.  Math.floor is another command we use to round down to the nearest whole number.  So we choose a floating decimal between 1 and 100.999 then round down to the nearest whole number in order to chomp off those pesky numbers after the decimal. 
 
 
-###OFF TOPIC:## 
-    Do you remember from Math class the "Order of Operations" principle?  Yeah you thought you'd never use it in real life right?  Well guess again!  In summary the order of operations says certain math functions must be performed first before others.  Do you remember the acronym PEMDAS?  
+        __OFF TOPIC:__ 
+        Do you remember from Math class the "Order of Operations" principle?  Yeah you thought you'd never use it in real life right?  Well guess again!  In summary the order of operations says certain math functions must be performed first before others.  Do you remember the acronym PEMDAS?  
 
-    PEMDAS stands for: 
-    1. ###P###erenthesis, 
-    2. ###E###xponents, 
-    3. ###M###ultiplication, 
-    4. ###D###ivision, 
-    5. ###A###ddition, and 
-    6. ###S###ubtraction 
+        PEMDAS stands for: 
+        1. _P_ erenthesis, 
+        2. _E_ xponents, 
+        3. _M_ ultiplication, 
+        4. _D_ ivision, 
+        5. _A_ ddition, and 
+        6. _S_ ubtraction 
 
-    PEMDAS is the order all mathmaticians (and JAvaScript) must handle complex math.  In the example below see if you can follow the work as we add parenthesis "()" to our code.  Remember we handle all the math within the innermost parenthesis first working our way outward until there are no more parenthesis left
-        1.   Math.random###()### = 0 to .999999
-        2.   Math.random()*100) = 0 to 99.99999
-        3.   ###(###Math.random()*100)###+1)### = 0 to 100.9999
-        4.   Math.floor###(###(Math.random()*100)+1###)### = 0 to 100
+        PEMDAS is the order all mathmaticians (and JAvaScript) must handle complex math.  In the example below see if you can follow the work as we add parenthesis "()" to our code.  Remember we handle all the math within the innermost parenthesis first working our way outward until there are no more parenthesis left
+            1.   Math.random_()_ = 0 to .999999
+            2.   Math.random() _*100 _ ) = 0 to 99.99999
+            3.   _(_ Math.random()*100) _+1)_ = 0 to 100.9999
+            4.   Math.floor# _(_ (Math.random()*100)+1 _)_ = 0 to 100
 
 Whew that was some really hard math!  If this doesn't make sense dont worry, it is a very complicated law of Mathematics that you will be familiar with very soon.  And you can say you learned it here first!  For now our next line of code will look like this.  
 ```javascript
