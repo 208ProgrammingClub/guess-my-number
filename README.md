@@ -124,11 +124,10 @@ So here is our first opportunity to make an impression on our customer!  You can
   var name = prompt("Hello, what's your name? ");
   alert("If you would like to play, then step on up " + name + ".  I have picked a number from 1 to 100.  See if you can guess my number in less than 10 tries!  Click Ok to proceed.  You may type 'quit' or 'no' anytime in the future to leave the game");
  ```
-####Hint:####  Click your mouse anywhere inside the code window above and press Ctrl+A to select all.  Then hold and press Ctrl+C to Copy to your clipboard after you navigate into your GuessMyNumber.js file press Ctrl+V to paste.
+__Hint:__  Click your mouse anywhere inside the code window above and press Ctrl+A to select all.  Then hold and press Ctrl+C to Copy to your clipboard after you navigate into your GuessMyNumber.js file press Ctrl+V to paste.
 
 ###Wow the first two check boxes are off our list!  However we are still uncertain how we are going to allow our players to quit early but lets move on anyway.
-:ballot_box_with_check: [Prompt] the player to enter their [name].
-:ballot_box_with_check: Use their [name] to print a greeting.
+:ballot_box_with_check: [Prompt] the player to enter their [name].\r:ballot_box_with_check: Use their [name] to print a greeting.
 
 
 ###Our player greeting is done. Let us look at our next requirement###
