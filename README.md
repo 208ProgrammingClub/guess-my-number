@@ -13,17 +13,17 @@ I met with our customer and listened intently to put together this list of requi
 :white_medium_square: Generate a random number from 1 to 100, and store it as a [target_number] for the player to guess.
 
 
-:white_medium_square: Before each guess, _*[Prompt]*_ the player:
+:white_medium_square: Before each guess, [Prompt] the player:
 
   1. let them know how many guesses (out of 10) they have left.
   2. to make a guess as to what the [target_number] is.
         
 
-:white_medium_square: [if] the player's guess is less than the [target_number], [Alert] "Oops. Your guess was LOW."
+:white_medium_square: [if] the player's guess is less than the [target_number], [alert] "Oops. Your guess was LOW."
 
-:white_medium_square: [else] the player's [guess] is greater than the [[target_number]], [Alert] "Oops. Your guess was HIGH.".
+:white_medium_square: [if] the player's [guess] is greater than the [target_number], [alert] "Oops. Your guess was HIGH.".
 
-:white_medium_square: [else] the player's [guess] is equal to the [target_number], _*[Alert]*_ them "Good job, [name]! You guessed my number in [number_of_guesses] guesses!".
+:white_medium_square: [if] the player's [guess] is equal to the [target_number], [alert] them "Good job, [name]! You guessed my number in [number_of_guesses] guesses!".
 
 :white_medium_square: Keep track of the [number_of_guesses] the player has made.
 
@@ -72,17 +72,18 @@ Gameover | if number_of_guesses >=10
 
 #3.  Setting Up Our Environment!#
 
-If you are using c9.io and cloned the roject from Github you should be ready to go.  Otherwise lets check to be sure we have everything in place.  See if you have the following files in your C9.io workspace.
-1. Readme.md 
-2. GuessMyNumber.js
+If you are using c9.io and cloned the project from Github you should be ready to go.  Otherwise lets check to be sure we have everything in place.  
+See if you have the following files in your C9.io workspace.
+    1. Readme.md 
+    2. GuessMyNumber.js
 
-The file readme.js is full of our instructions
-The file GuessMyNumber.js is empty -You didn't think I was going to do all the work did you?
+The file readme.js is full of our instructions.
+The file GuessMyNumber.js should be completely empty -You didn't think I was going to do all the work did you?
 
-## Lets get Started!##
+### Lets get Started!###
 
 #4. Prompting for information#
-Our first requirement is to greet the user by name and ask (prompt) them to guess a number between 1 and 100. To accomplish that, we'll need to write a script that gets input from the user, stores that input, and then uses that stored value to create some output. We can do all this in just a few lines of JavaScript code:  Please open your GuessMyNumber.js file and type in the following code exactly as it is dislayed below.
+Our first requirement is to greet the user by name and ask (prompt) them to guess a number between 1 and 100. To accomplish that, we'll need to write a script that gets input from the user, stores that input, and then uses that stored value to create some output. We can do all this in just a few lines of JavaScript code:  Please open your GuessMyNumber.js file and type in the following code _*EXACTLY*_ as it is dislayed below.
 ```javascript
 
 var name = prompt("Welcome to 'Guess My Number!  What's your name? ");
@@ -95,18 +96,18 @@ That was easy!  When the game is loaded, our user will be asked to enter his/her
 var name = prompt("Welcome to 'Guess My Number!  What's your name? ");
 ```
 
-This is the first of two jobs belonging to "prompt". The "prompt" method reads a line from standard input (characters typed in the terminal window). When you call prompt, it causes the program to halt until the user types their name and presses the Enter key.  
+This is the first of two jobs belonging to "prompt". The "prompt" method reads a line from our input field (characters will be typed into an input field on the pop-up window in ur browser). When you call prompt, it causes the program to halt until the user types their name and presses the Enter key.  
 
-The second job is to store the players name as our "name" variable.  So you see when we assign a variable name to "prompt" it returns or saves the user's input to the program as an object which we assigned to the variable "name".  "Prompt can store string (text), or integers (numbers). 
+The second job is to store the players name as our [name] variable.  So you see when we assign a variable name to a "prompt" command it asks for a value and saves the user's input to the program as an object which we assigned to the variable we defined as [name].  "Prompt" can store string (text), or integers (numbers). 
 
 ##Alert the user##
 The second block of code...
 ```javascript
     var player_guess = alert("See if you can guess my number in less than 10 tries!");
 ```
-essentially works the same way but it doesn't listen for the player to input any information.  The "alert" command offers the user an ok button to proceed but does nothing with the result of you pressing ok.  Kind of like talking to a pet turtle right?
+This block of code essentially works the same way but it doesn't allow for the player to input any information.  The "alert" command offers the user an ok button to proceed but does nothing with the result of you pressing ok other than resume from its paused state.  Kind of like talking to a pet turtle right?  Thank goodness that ok buton is there otherwise the program would be frozen.  
 
-So the player has typed his/her name and hits the Enter/Return key, We want them to see a second message that welcomes them by name and starts the game.  Well that sounds like a good start but hmmm... something is missing.  Our prompt command stores their name be we are not using it in our greeting.  Also how do we know the computer didn't pick a number less than zero or greater than 100?  We definitely need to tell the player a little bit more about the game.  Remeber the MVP list above said the computer would choose between 1 and 100.  We must pass that information on to our player in the "alert" command.What else can we do to make our game better?
+So far the player has typed his/her name and hits the Enter/Return key, THen they see a second message that starts the game.  Well that sounds like a good start but hmmm... something is missing.  Our prompt command stores their name be we are not using it in fact our MVP required us to use their name in a greeting.  Also how do we know the computer didn't pick a number less than zero or greater than 100?  We definitely need to be more friendly and tell the player a little bit more about the game.  Lets go back to th eMVP list above doesn't it say the computer would choose between 1 and 100.  We must pass that information on to our player in the "alert" command.  What else can we do to make our game better?
 
     What if they don't want to play?  How will we handle that? 
     What if they can't play because they have chores or homework to do?  
@@ -114,16 +115,16 @@ So the player has typed his/her name and hits the Enter/Return key, We want them
     
     Alert doesnt store any values. Why are we using alert instead of prompt?
 
-These decisions come up all the time in software development that's the fun part... we get to make __Executive Decisions!__  But wait, asking the user if they want to play is not in our MVP list from above.  True, but it really helps the program if our users are informed on what to do or given the opportunity to stop playing right?  Besides the better we make the program, the more work we will be awarded and the more we can charge for our work because we are __Awesome!__.  Whenever we have an opportunity to improve the user experience we should try our best. Unless of course those efforts will cause us to turn our work in late, or those efforts will cost us a lot of extra time and money which we cannot afford.  It's a good opportunity to ask your fellow developers what they would do in this situation if you don't know.  Developers are always willing to share their ideas.  
+These decisions come up all the time in software development that's the fun part... we get to make __Executive Decisions!__  
+
+But wait, asking the user if they want to play is not in our MVP list from above.  True, but it really helps the program if our users are informed on what to do or given the opportunity to stop playing right?  Besides the better we make the program, the more people will paly the game and the work we will be awarded and the more we can charge for our work because we are __Awesome!__.  Whenever we have an opportunity to improve the user experience we should try our best. Unless of course those efforts will cause us to turn our work in late, or those efforts will cost us a lot of extra time and money which we cannot afford.  It's a good opportunity to ask your fellow developers what they would do in this situation if you don't know.  Developers are always willing to share their ideas.  
 
 So here is our first opportunity to make an impression on our customer!  You can be the one who decides what our greeting should be.  Maybe you can ask a family member or your neighbor.  Before you ask a pet turtle for inspiration, below is an example for you to get started with.  You can paste the code just as it is right into your javascript file or you can change the wording inside the "  ".  Be sure not to delete the "" and also double check your spelling!  We really need to impress our client and our players.  Especially since this is an added feature!
 ```javascript
-
   var name = prompt("Hello, what's your name? ");
   alert("If you would like to play, then step on up " + name + ".  I have picked a number from 1 to 100.  See if you can guess my number in less than 10 tries!  Click Ok to proceed.  You may type 'quit' or 'no' anytime in the future to leave the game");
-  
  ```
-
+####Hint:####  Click your mouse anywhere inside the code window above and press Ctrl+A to select all.  Then hold and press Ctrl+C to Copy to your clipboard after you navigate into your GuessMyNumber.js file press Ctrl+V to paste.
 
 ###Wow the first two check boxes are off our list!  However we are still uncertain how we are going to allow our players to quit early but lets move on anyway.
 :ballot_box_with_check: [Prompt] the player to enter their [name].
