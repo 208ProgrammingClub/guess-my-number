@@ -142,7 +142,7 @@ Javascript uses Math.random() which is a bult in JavaScript method used to gener
 Oh no! Math.random will return a floating decimal number less than 1 and we told our user we were going to pick a number from 1 to 100.  How can we make this right if not at least fair?  Well in order to return 1 to 100 we would simply need to multiply the result of Math.random by 100 and add 1.  Here is another JavaScript trick.  Math.floor is another command we use to round down to the nearest whole number.  So we choose a floating decimal between 1 and 100.999 then round down to the nearest whole number in order to chomp off those pesky numbers after the decimal. 
 
 
-        __OFF TOPIC:__ 
+        OFF TOPIC: 
         Do you remember from Math class the "Order of Operations" principle?  Yeah you thought you'd never use it in real life right?  Well guess again!  In summary the order of operations says certain math functions must be performed first before others.  Do you remember the acronym PEMDAS?  
 
         PEMDAS stands for: 
@@ -154,16 +154,14 @@ Oh no! Math.random will return a floating decimal number less than 1 and we told
         6. _S_ ubtraction 
 
         PEMDAS is the order all mathmaticians (and JAvaScript) must handle complex math.  In the example below see if you can follow the work as we add parenthesis "()" to our code.  Remember we handle all the math within the innermost parenthesis first working our way outward until there are no more parenthesis left
-            1.   Math.random_()_ = 0 to .999999
-            2.   Math.random() _*100 _ ) = 0 to 99.99999
-            3.   _(_ Math.random()*100) _+1)_ = 0 to 100.9999
-            4.   Math.floor# _(_ (Math.random()*100)+1 _)_ = 0 to 100
+            1.   Math.random() = 0 to .999999                  //first set of parenthesis 
+            2.   (Math.random() *100) = 0 to 99.99999          //see the additional parenthesis?
+            3.   (Math.random()*100) +1) = 0 to 100.9999       //multiplication before addition 
+            4.   Math.floor((Math.random()*100)+1) = 0 to 100  //Math.floor is applied to all the code above by adding extra parenthesis again
 
 Whew that was some really hard math!  If this doesn't make sense dont worry, it is a very complicated law of Mathematics that you will be familiar with very soon.  And you can say you learned it here first!  For now our next line of code will look like this.  
 ```javascript
-
        var target_number = Math.floor((Math.random()*100)+1);      
-       
 ```
 
 The code in the example above creates a variable named [target_number] and sets it equal to an integer between the range 1 and 100.  In JavaScript try to think of the equals sign as assigning a value to a variable.  If I were to read your code out loud I might say it like this:  
@@ -177,14 +175,14 @@ The code in the example above creates a variable named [target_number] and sets 
 ###Let's look at the next step...
 
 #6. Counting our guesses#
-:white_medium_square: Before each guess, _*[Prompt]*_ the player:
+:white_medium_square: Before each guess, [prompt] the player:
 
   1. let them know how many guesses (out of 10) they have left.
   2. to make a guess as to what the [target_number] is.
 
 The first step is to let them know how many guesses they have left.  So you can see we will need a formula and a variable to track how many guesses the player has made.  Obviously when the player first starts they haven't made any guesses, so we'll create a variable named [number_of_guesses] that's set to 0 at the start of every game.  Next we will want [number_of_guesses] to count up by 1 on each turn. Here is a little known JavaScript trick using ++ to count up by one.  
 
-It's the same as saying "number_of_guesses" gets the new value of "number_of_guesses + 1". 
+It's the same as saying "number_of_guesses" gets the new value of "number_of_guesses + 1" but a whole lot shorter. 
 ```javascript
     
     var number_of_guesses = 0;
@@ -198,33 +196,33 @@ This looks crazy doesn't it?  But it works!  In fact we have used this before in
 ```
 The incrementer is near the end.  Do you see "i++"?  
 
-#7.  Join objects like magic!# 
+#7.  Join objects like magic! 
 Before we allow our player to make a guess as to what the [target_number] is,  our MVP states we must first tell them how many guesses they have left...  
 
 Way back in step one we learned how to prompt our user to input information using the "prompt" command. 
 
 The first thing you might attempt to do is display the [number_of_guesses] remaining but how would they know what the number meant.  Well we need to speak them.  After all we are the program developers right?  We can do anything including joining our code right smack in the middle of a well written sentence!  
 
-How we request their input is called the "prompt" command; and how we join our code in a sentence is called "concatenation". In fact we used both "prompt" and "concatenation" previously when merging the playyers [name] into our greeting in step one.  The prompt method simply retrieves input from the user and stores it as a variable.  Prompt in the next code block is going to call for our users guess (input) and then records the user's number as their guess.  
+How we request their input is called the "prompt" command; and how we join our code in a sentence is called "concatenation". In fact we used both "prompt" and "concatenation" previously when merging the players [name] into our greeting in step one.  The prompt method simply retrieves input from the user and stores the users input value as a variable.  Prompt in the next code block is going to call for our users guess (input) and then record the user's number as their guess.  
 
-One magical way to interact with our users is through concatenation.  'Concatenation' works with string (text) numbers, variables, functions, and other objects in JavaScript to concatenate (join) multiple objects together using the + sign, just as many other languages do. Something like this: "You have + [7] + guesses left!"  Well it is actually a little more complicated but essentially I want you to recognize we have some words before and after our code which is a variable name [guesses_remaining] joined by '+'.  Remember the number [7] represents our [guesses_remaining] variable and is updated by ++ (one turn) each time the user takes a turn at guessing our number.  So we can't hard code the number in our well written sentence, in fact our remaining guesses has to be able to change as the game goes on.  Thats the magic happening behind the curtain using variables and 'concatenation'.
+One magical way to interact with our users is through concatenation.  'Concatenation' works with string (text) numbers (integers), and objects such as: variables, functions, and "booleans" in JavaScript to concatenate (join) multiple objects together using the "+" sign, just as many other languages do. Something like this: "You have + [7] + guesses left!"  Well it is actually a little more complicated but essentially I want you to recognize we have some words (called string) before and after our code which is a variable name [guesses_remaining] joined by '+'.  Remember the number [7] represents our [guesses_remaining] variable and is updated by ++ (one turn) each time the user takes a turn at guessing our number.  So we can't hard code the number in our well written sentence, in fact our remaining guesses has to be able to change as the game goes on.  Thats the magic happening behind the curtain using variables and 'concatenation'.
 ```javascript
 var guesses_remaining = (10-number_of_guesses);
 alert("You have" + " " + guesses_remaining + " " + "guesses left.  Guess what my number is");
 
 ```
-One other thing I want to point out is concatenation will not add spaces into your well written sentence unless you tell it to.  When we want to display string (words) we enclose our words in  " " (double quotes) such as "You have" and "guesses left."  Notice I also inserted two extra blank spaces into our well written sentence above.  The first space appears after the word 'have' and the second appears before the word 'guesses'. They look like this " " two double quotes around a space is all it takes.  I could also have written our code like this:
+One other thing I want to point out is concatenation will not add spaces into your well written sentence unless you tell it to.  Any time we want to display string (words) we must enclose our words in  " " (double quotes) such as "You have" and "guesses left."  Notice I also inserted two extra blank spaces into our well written sentence above.  The double quotes tell JavaScript "anything inside these quotes is not code please print it as if it were text".  The first space appears after the word 'have' and the second appears before the word 'guesses'. They look like this " " two double quotes around a space is all it takes to treat a space character as text.  I could also have written our code like this:
 ```javascript
 var guesses_remaining = (10-number_of_guesses);
 alert("You have " + guesses_remaining + " guesses left.  Guess what my number is");
 ```
-See if you can find the extra spaces.  They both display the same well written sentence just two different ways to do the same thing thats all.  For future reference if you place double quotes around a number, or a variable name, JavaScript will treat it like a word so be extra cautious!  Remember ##We are Awesome## and we never make mistakes like this!  _Well maybe once in a while_. 
+See if you can find the extra spaces.  They both display the same well written sentence just two different ways to do the same thing thats all.  For future reference if you place double quotes around a number, or a variable name, JavaScript will treat it like string (text) so be extra cautious!  Remember ##We are Awesome## and we never make mistakes like this!  _Well maybe once in a while_. 
 
-###Hey wait a minute "alert" just tells the reader what we want to say and give them an 'Ok' button to proceed.  Our MVP says we need to prompt them for their guess.
+####Hey wait a minute#### "alert" just tells the reader what we want to say and give them an 'Ok' button to proceed.  Our MVP says we need to prompt them for their guess.
 Well good thing you are paying attention!  Yes, the alert, and prompt, commands perform unique tasks.  Prompt is actually what we need to use here so lets make that change.  
 
 
-#8. Progress#
+#8. Progress
 Lets take a minute to review our entire code up to this point just to make sure we are all on the same page.
 ```javascript
 var number_of_guesses = 0;
@@ -242,14 +240,15 @@ var players_guess = prompt("You have" + " " + guesses_remaining + " " + "guesses
 
 ```
 
-Check your code against the progress report above first then lets save our file: ###GuessMyNumber.js### before we move forward.  
+Check your code against the progress report above first then lets save our file: __GuessMyNumber.js__ before we move forward.  
 
 
-from within c9.io select:
-     File > Save > OK.  
+        from within c9.io select:
+
+            File > Save > OK.  
 
 
-##Well Done! lets review what you have just completed!##
+##Well Done! lets review what you have just completed!
 
 :ballot_box_with_check: [Prompt] the player to enter their [name].
 ```javascript
@@ -266,6 +265,7 @@ from within c9.io select:
 :ballot_box_with_check: Keep track of how many guesses the player has made.
 ```javascript
     var number_of_guesses = 0;
+    
     number_of_guesses++;
 ```    
 :ballot_box_with_check: Before each guess, _*[Prompt]*_ the player:
@@ -277,7 +277,7 @@ from within c9.io select:
 ``` 
 
 
-#9.  A fork in the road#
+#9.  A fork in the road
 
 Let's look at the next group of requirements from our MVP list.
 
@@ -296,16 +296,19 @@ Let's look at the next group of requirements from our MVP list.
 :white_medium_square: [else] the player has made a choice that is not even a number and clearly does not want to continue to play.
 
 
-// Wow there is a lot of things going on here.  Do you see we are at a fork in the road?  [if] this [else] that and if not then [else] do this [or] another [if] statement.  Ha! no problem you ? just break it into manageable chunks!  Sure thing.  First we want to know when the player actually wins, or looses the game.  I mean lets get this thing over with soon, that's a lot of code to write!
+###Wow there are a lot of things going on here.###  Do you see we are at a fork in the road?  [if] this [if] that and if not then [else] do this [or] another [if] statement.  
+How will our program know which way to go?  Ha! no problem you say?...just break it into manageable chunks!  Sure thing.  First we want to know when the player actually wins, or looses the game.  I mean lets get this thing over with soon, that's a lot of code to write!
 
-##Conditionals##
-first we need to understand how __Conditinals__ work.  Conditionals rely on a "boolean expression" (one with a true or false value) to decide whether the code they contain should be executed. Javascript has constants representing the two boolean values, true and false.  When JavaScript looks at the conditional [if] statement (the line of code that starts with the word if) and the [if] statement is a 'true' statement, the code that immediately follows will run (execute).  If not, the following code surrounded in {} is just ignored.  JavaSccipt then proceeds to the next line and tests to see if it is true or false and so on.   If the players guess is too high we should probably tell them they are too high, similarly if thier guess is too low we should tell them they are too low.  Else if their guess is not a number we should exit the game.  We use Javascript to run and test the users guess against portions of our code under certain "Conditions".  Thats where the word __"Conditionals"__ comes from. 
+##Conditionals
+Before we dive in we need to understand how __Conditinals__ work.  Conditionals or conditional statements rely on a "boolean expression" (a "condition" that has a true or false answer) to determine whether the code they contain should be executed or ignored. Javascript understands the constants representing the two boolean values, true and false.  In most JavaScript programs look for the conditional [if] statement (the line of code that starts with the word if).  When the [if] statement is in fact a 'true' statement, the code that immediately follows will run (execute).  If it is false, the following code surrounded in {} is ignored.  After determining [if] the condition is true and JavaScript runs the code or [if] JavaScript determines it is false, JavaSccipt then proceeds to the next line and tests to see if it is true or false and so on.   
 
-##10. Lets dive into our first Conditional statement!##  
+If the players guess is too high we should probably tell them they are too high, similarly if thier guess is too low we should tell them they are too low.  Else if their guess is not a number we should exit the game.  We use Javascript to run and test the users guess against portions of our code under certain "Conditions".  Thats where the word __"Conditionals"__ comes from. 
+
+##10. Lets dive into our first Conditional statement!
 
 First we need to compare the player's guess with the target. If it's too high, we print a message saying so. Otherwise, if it's too low, we print a message to that effect, and so on... doesn't this look like we need the ability to execute portions of our code only under certain conditions?
 
-### Too Low ###
+### Too Low 
 If the player's guess is less than the [target_number], say "Oops. Your guess was LOW."
 ```javascript
 if(players_guess < target_number {
@@ -313,7 +316,7 @@ if(players_guess < target_number {
 }
 ```
 
-### Too High ###
+### Too High 
 If the player's guess is greater than the [target_number], say "Oops. Your guess was HIGH."
 ```javascript
 if(players_guess > target_number {
@@ -321,7 +324,7 @@ if(players_guess > target_number {
 }
 ```
 
-### Game Over ###
+### Game Over 
 If the player runs out of turns without guessing correctly, say "Sorry. You didn't get my number. My number was [target_number]." 
 ```javascript
 if([number_of_guesses] >= 10 {
@@ -332,9 +335,12 @@ if([number_of_guesses] >= 10 {
 ```
     Q. I notice that you're indenting the code between the if and the end. Is that required?
 
-    A. Javascript doesn't treat indentation as significant to the meaning of the program, No. (Unlike some other languages, such as Python.) But indenting code within if statements, loops, methods, classes, and the like is just good coding style. It helps make the structure of your code clear to your fellow developers (and even to yourself).
+    A. Javascript doesn't treat indentation as significant to the meaning of the program, No. 
+    (Unlike some other languages, such as Python.) But indenting code within if statements, loops, 
+    methods, classes, and the like is just good coding style. It helps make the structure of your 
+    code clear to your fellow developers (and even to yourself).
 
-### Victory!!! ###
+### Victory!!! 
 If the player's guess is equal to the [target_number], tell them "Good job, [name]! You guessed my number in [number_of_guesses] guesses!"
 ```javascript
 if(players_guess = target_number {
@@ -343,15 +349,18 @@ if(players_guess = target_number {
 }
 
 ```
-#11.  Want to Quit???###
-Remember a while back we wanted to alow our user to exit the game at any time.  Well in order to quickly determine if the game is over lets create a variable that we can use that simply switches between true or false.  This [game_over] variable will change if the player has typed in 'quit' or 'no'. We will also call [game_over = true] if the player guessed correctly or they run out of turns and we can end the game by victory or you loose.  At the beginning of every game we obviously want this [game_over] variable to be set to "false" because the game is not over..  Additionally we will move this variable with the other setup variables to the beginning of our program to reset the game to its starting values and to prevent unnecesary conditionals from ever being tested.  
+#11.  Want to Quit?
+Remember a while back we wanted to alow our user to exit the game at any time.  Well in order to quickly determine if the game is over lets create a variable that we can use that simply switches between true or false.  We can also change this [game_over] variable if the player wants to quit and has typed in 'quit' or 'Uncle!'. We will also call [game_over = true] if the player guessed correctly or they run out of turns and we can end the game by victory or you loose.  You see we are checking in many places if the variable [game_over] = true.  So we need to make sure we set the game up correctly.  At the beginning of every game we obviously want this [game_over] variable to be set to "false" because the game is not over...  Additionally we will move this variable with the other setup variables to the beginning of our program to reset the game to its starting values and to prevent unnecesary conditionals from ever being tested. 
+
+
+Please move these lines of code to the top of your __GuessMyNumber.js__ file 
 ```javascript
 var game_over = false;
 var number_of_guesses = 0;
 var guesses_remaining = 10;
 ```
 
-There is a way we will test to see if the user wants to quit.  If the player types in anything other than a number or a number outside our range of 1 to 100 they obviously don't want to play and we can call the [game_over] = true.  Remember when using conditionals all the code between the {} will run while the conditiona is true.  Using this knowledge we have the option to display different messages and change variables for each condition.  Lets take a look at how we do this when all other conditions are false we use the [else] command to capture any user input that does not meet our condition testing and allows us to build an emergency exit from our game.
+
 
 Do you see the word 'NAN' below? Well 'NAN' is short for "Not a Number" if(players_guess='NAN') they must have typed in something like 'quit' or 'no' which are not numbers.  If the 'NAN' statement is true, we will want to quit our game.  But what if the [players_guess] is zero or negative or if the [players_guess] is greater than 100?  how will we test that?
 ```javascript
@@ -403,7 +412,7 @@ This seems like a lot of code lets see if we can understand conditionals better 
             if false || false "I won't!" end
             if false || true  "I will run!" end
 
-Spoiler Alwert!   I'm going to help you out a bunch in hopes that you can review the code below and compare it with some examples of Conditional Statements above to see how we are able to shorten all those messy lines of code. 
+Spoiler Alert!   I'm going to help you out a bunch in hopes that you can review the code below and compare it with some examples of Conditional Statements above to see how we are able to shorten all those messy lines of code. 
 ```javscript
         if(players_guess < target_number) {
         alert("Oops. Your guess was TOO LOW.");
@@ -423,8 +432,10 @@ Spoiler Alwert!   I'm going to help you out a bunch in hopes that you can review
         alert("Sorry " + name + ". You used up all your guesses and still didn't guess my number.  My number was " + [target_number] +".");
         game_over = true;
         } 
+```
 
-    
+###What if I do want to quit, this is hard!###  There is in fact a way we will test to see if the user wants to quit.  But you are on the hook to finish this Job!  If the player types in anything other than a number or a number outside our range of 1 to 100 they obviously don't want to play and we can update the [game_over] = true.  Unlike turtles variables names cannot be mutated they can however be passed around and their values can be updated.  A golden rule of coding is that variable names are immutable.  This means we cannot change a the name [game_over] to another name it will always exist in a program once instantiated but we can create a new variable to perform the same or similar task.  Remember also when using conditionals all the code between the {} will run while the conditiona is true.  Using this knowledge we have the power and ability to display different messages, and update variables for each condition.  Lets take a look at how we do this when all other conditions are false.  To capture any other option the user could possibly input we use the [else] command.  [else] is very powerful so use it wisely to capture any user input that does not meet our previous [if] conditional tests and allow us to build an emergency exit from our game.
+```javascript
     else{
        var status = prompt("It appears you don't want to play.  Type Quit in the field below to end the game, or Play to continue")
        if(status == "quit"){
@@ -433,9 +444,8 @@ Spoiler Alwert!   I'm going to help you out a bunch in hopes that you can review
        } 
 ```
 
-
 We have done some amazing work so far! We have just one more requirement to go for our guessing game!
-##lets review what you have just completed!##
+##lets review what you have just completed!
 
 :ballot_box_with_check: [Prompt] the player to enter their [name].
 ```javascript
@@ -461,7 +471,6 @@ We have done some amazing work so far! We have just one more requirement to go f
     var guesses_remaining = (10-number of guesses);
     var players_guess = prompt("You have" + " " + guesses_remaining + " " + "guesses left.  Guess what my number is" );
 ``` 
-
 :ballot_box_with_check: [if] the player's guess is less than the [target_number], [Alert] "Oops. Your guess was LOW."
 ```javascript
     if(players_guess < target_number {
@@ -474,8 +483,7 @@ if(players_guess > target_number) {
    alert("Oops. Your guess was TOO HIGH.")
    number_of_guesses++;
 var guesses_remaining = (10-number_of_guesses);
-}
-        
+}       
 ``` 
 :ballot_box_with_check: [if] the player's [guess] is equal to the [target_number], _*[Alert]*_ them "Good job, [name]! You guessed my number in [number_of_guesses] guesses!".
 ```javascript
@@ -491,13 +499,19 @@ if(players_guess == target_number) {
     game_over = true;
  } 
 ``` 
+:ballot_box_with_check: [else] the player has made a choice that is clearly "Not A Number" and probably does not wish to continue to play.
+```javascript
+    else{
+       var status = prompt("It appears you don't want to play.  Type Quit in the field below to end the game, or Play to continue")
+       if(status == "quit"){
+           alert("Bye for now " + name + "!")
+           game_over=true
+       } 
+```
 
-
-##Cruising right along what is left of our program then?##
+##Cruising right along what is left of our program then?
 :white_medium_square:  Keep allowing the player to guess until they get it right, [or].
 
-:white_medium_square:  [else] the player has made a choice that is not even a number and clearly does not want to continue to play.
-` 
 
 Currently, the player gets more than 10 guesses and there could be better brakes on this speed machine!!!  What stopping us before our player guesses correctly and our program becomes a loser?.  First We need to stop asking them after their 10th turn, [or] until they get the right answer, whichever comes first. The code to prompt for a guess is already in place, we just need to run it more than once and make sure we are counting the [number_of_guesses] correctly. We can use a loop to execute a segment of code repeatedly.  When you need one or more statements to be executed over and over, you place them inside a loop.  JavaScript offers a while loop as a counterpart to a for loop. A while loop repeats until the condition is true (that is, it loops over and over again while it's true and stops when the condition is false). 
 
@@ -511,7 +525,7 @@ The code within the loop body repeats only while the condition is true.  What is
 
 Here's our conditional code again, updated to run within a while loop:
 ```javascript
-while(!gameover){
+while(!game_over){
     if(players_guess < target_number {
     alert("Oops. Your guess was LOW.")
     }
@@ -543,10 +557,10 @@ while(!gameover){
 
 ```
 
-Did you catch it?  If so give yourself a hug.  If you had to resort to asking your pet turtle pat yourself on the back anyway you were very resourceful and there is no shame in that
+Did you catch it? !Bang [game_over] If so give yourself a hug.  If you had to resort to asking your pet turtle pat yourself on the back anyway you were very resourceful and there is no shame in that
 
 . 
-#11.  Refactor#
+#11.  Red - Green - Refactor
 Looking at the last 12 lines of code we are actually testing if the player entered input that is outside our range or typed in something that was "NAN" (not a number).  
 ```javascript
     if(players_guess='NAN'){
@@ -569,15 +583,20 @@ In the development world we want our code to run super fast and having extra lin
 2. GREEN After they write their code they run it against the tests until it is all free of bugs and passes all teh tests.
 3. REFACTOR! which means revise and simplify.  At each refactor step the developers team up and they repeat the entire process all over again until they can't make their code any simpler or run any faster.  
 
-We are here now in TDD Step 3. ...except we havent built any test scripts.  We can simplify the last 12 lines of code into one smaller conditional statement that is ran when all [else] fails.  The else command basically states if none of the ablove [if] conditional statements are true then do this. 
+We are here now in TDD Step 3. REFACTOR...except we havent truely built any test scripts separate from our [if] condition statements.  Ok we cheated a bit.  We can simplify the last 12 lines of code into one smaller conditional statement that is ran when all [else] fails.  The else command basically states if none of the ablove [if] conditional statements are true then do this. 
 
 Lets refactor our code and add a variable.  We need a variable that can be set to determine if the user wants to quit playing the game.  We will call this variable [status]  
 
     ###Off Topic: ###
-    normally when we create a variable we must give it a value.  This is the process called instantiation and refers to the very first value assigned to a variable upon its creation.  Just think you were instantiated when your parents named you when you were first born.  You see the very first time (instance) a variable is created we should give it a value.  When a pet turtle is hatched its parents probably instantiated it with the value "" or null.  That will work just fine until the time its owner comes along and renames it.  
+    normally when we create a variable we must give it a value.  This is the process called instantiation 
+    and refers to the very first value assigned to a variable upon its creation.  Just think you were instantiated 
+    when your parents named you when you were first born.  You see the very first time (instance) a variable 
+    is created we should give it a name and a value.  When a pet turtle is hatched its an object and has great value
+    but its parents instantiated it with the value "" which in human terms means null.  
+    That will work just fine until the time its owner comes along and changes the object's name value to "Hank".  
 
 When we instantiate the variable [status] below we are immediately giving it the name or the value returned by the user in the prompt command.  The condition is tested to see if the player types the word quit, or Quit, or QUIT.  [if] the condition is true the users choice is comfirmed and the game is ended.  If not the program executes the next block of code or hits the incrementer before repeating through the while loop all over again
-###Lets see how much we can refactor our code:###
+###Lets see how much we can refactor our code:
 ```javascript
 else{
        var status = prompt("It appears you don't want to play.  Type Quit in the field below to end the game, or Play to continue")
@@ -714,7 +733,9 @@ while(!game_over){
             }
     }
 }
-
+```
 
 Let's test our game!
-Using variables, strings, method calls, concatenation, conditionals, equality and other comparisons, !Bang, Test Driven Design, and even loops, you have written a complete game in Javascript! Better yet, it took less than 40 lines of code thanks to yur refactoring skills! Pat yourself on the back! #You did it!!!#
+
+###Using variables, strings, method calls, concatenation, conditionals, equality and other comparisons, !Bang, Test Driven Design, and even loops, you have written a complete game in Javascript! Better yet, it took less than 40 lines of code thanks to yur refactoring skills! Pat yourself on the back! ###
+#You did it!!!
